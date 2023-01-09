@@ -45,6 +45,9 @@ function clearCalendar()
 {
     document.getElementById("week1").innerHTML = "";
     document.getElementById("week2").innerHTML = "";
+    document.getElementById("week3").innerHTML = "";
+    document.getElementById("week4").innerHTML = "";
+    document.getElementById("week5").innerHTML = "";
 
     // สังเกตดูว่ามี element ไหนอีกที่เราต้องเคลียจากตาราง แล้วเติมให้ถูกต้อง
 
@@ -54,7 +57,7 @@ function clearCalendar()
 function updateCalendar()
 {
     //clearCalendar();
-
+document.getElementById("currentMonth").innerHTML = String(Month);
     // ใส่ค่าที่อัพเดทให้กับปฏิทิน
 
 }
@@ -63,7 +66,12 @@ function updateCalendar()
 function prevMonth()
 {
     // ดูตัวอย่างจากฟังก์ชั่น nextMonth() อย่าลืมเช็คกรณีที่เลขที่เดือนน้อยกว่า 0 ให้วนกลับไปที่ 11
+    currentMonth -= 1;
 
+    if(currentMonth < 0)
+    {
+        currentMonth = 11;
+    }
 }
 
 // ฟังก์ชั่นสำหรับเลื่อนเดือนไปเดือนถัดไป
@@ -94,6 +102,12 @@ function prevYear()
 // ฟังก์ชั่นสำหรับเลื่อนปีไปปีถัดไป
 function nextYear()
 {
+    currentYear += 1;
+
+    if(currentYear < 0)
+    {
+        currentYear = ();
+    }
     // ดูตัวอย่างจากฟังก์ชั่น prevYear()
 }
 
