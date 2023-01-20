@@ -1,4 +1,4 @@
-var DEBUG = true;
+            var DEBUG = true;
 
 if(DEBUG)
 {
