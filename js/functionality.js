@@ -1,4 +1,4 @@
-            var DEBUG = true;
+var DEBUG = true;
 
 if(DEBUG)
 {
@@ -48,7 +48,6 @@ function clearCalendar()
     document.getElementById("week3").innerHTML = "";
     document.getElementById("week4").innerHTML = "";
     document.getElementById("week5").innerHTML = "";
-
     // สังเกตดูว่ามี element ไหนอีกที่เราต้องเคลียจากตาราง แล้วเติมให้ถูกต้อง
 
 }
@@ -56,10 +55,47 @@ function clearCalendar()
 // ฟังก์ชั่นสำหรับอัพเดทปฏิทิน คือ ล้างก่อน แล้วเติมข้อมูล
 function updateCalendar()
 {
-    //clearCalendar();
-document.getElementById("currentMonth").innerHTML = String(Month);
+    clearCalendar();
+
+    document.getElementById("currentMonth").innerHTML = String(months[currentMonth]);
+    document.getElementById("currentYear").innerHTML = String(currentYear);
     // ใส่ค่าที่อัพเดทให้กับปฏิทิน
 
+    insertCalendar();
+}
+
+function insertCalendar()
+{
+    var currentDay = 1;
+    ma
+
+    for(var r=1; r<7; r++)
+    {
+        var row = document.getElementById("week"+String(r));
+
+        for(var d=0; d<7; d++)
+        {
+            var dNow = new Date(currentYear, currentMonth, currentDay);
+  
+            dbg(d, dNow.getDay());
+
+            if(d == dNow.getDay())
+            {
+                const node = document.createElement("td");
+                node.className = "day";
+                node.innerHTML = '<div class="date">' + String(currentDay) + '</div>';
+                row.appendChild(node);
+                currentDay += 1;
+            }
+            else
+            {
+                const node = document.createElement("td");
+                node.className = "day other-month";
+                row.appendChild(node);
+            }
+        }
+    }
+    
 }
 
 // ฟังก์ชั่นสำหรับเลื่อนเดือนไปเดือนก่อนหน้า
@@ -72,6 +108,8 @@ function prevMonth()
     {
         currentMonth = 11;
     }
+
+    updateCalendar();
 }
 
 // ฟังก์ชั่นสำหรับเลื่อนเดือนไปเดือนถัดไป
@@ -102,13 +140,11 @@ function prevYear()
 // ฟังก์ชั่นสำหรับเลื่อนปีไปปีถัดไป
 function nextYear()
 {
+    // ดูตัวอย่างจากฟังก์ชั่น prevYear()
+
     currentYear += 1;
 
-    if(currentYear < 0)
-    {
-        currentYear = ();
-    }
-    // ดูตัวอย่างจากฟังก์ชั่น prevYear()
+    updateCalendar();
 }
 
 // ฟังก์ชั่นสำหรับเซฟนัดสำหรับวันที่คลิก
